@@ -25,41 +25,43 @@ Dieses Projekt bildet das klassische **„Simon Says“**-Spiel nach, bei dem ei
 - Digilab mit:
   - 4 Taster
   - 4 LEDs
-  - 1 RGB-LED
+  - 4 RGB-LED
   - LCD-Display
-- Jumperkabel & Widerstände
+- Jumperkabel
 
 ---
 
 ## 3. Verdrahtung
 
-| Komponente | Raspberry Pi GPIO (Beispiel) |
+| Komponente | Raspberry Pi GPIO             |
 |------------|-------------------------------|
-| Taster 1   | GPIO 5                        |
-| Taster 2   | GPIO 6                        |
-| Taster 3   | GPIO 13                       |
-| Taster 4   | GPIO 19                       |
-| LED 1      | GPIO 17                       |
-| LED 2      | GPIO 18                       |
-| LED 3      | GPIO 27                       |
-| LED 4      | GPIO 22                       |
-| RGB-LED    | GPIO 20 (R), 21 (G), 26 (B)   |
-| LCD (I²C)  | SDA/SCL                       |
-| GND        | Gemeinsame Masse              |
+| Taster S5  | GPIO 16                       |
+| Taster S6  | GPIO 19                       |
+| Taster S7  | GPIO 20                       |
+| Taster S8  | GPIO 21                       |
+| LED 8      | GPIO 12                       |
+| LED 7      | GPIO 13                       |
+| LED 6      | GPIO 14                       |
+| LED 5      | GPIO 15                       |
+| RGB-LED    |
+| LCD        |
+| GND        | 
 
 ---
 
 ## 4. Spielablauf
 
-1. Spielstart über einen Button im Node-RED-Dashboard oder einen physischen Taster.
-2. Eine zufällige LED blinkt – das ist der erste Schritt.
-3. Der Spieler muss den entsprechenden Taster drücken.
+c
+1. Spielstart über einen Button im Node-RED-Dashboard oder einen physischen Taster -> Beispiel: S1.
+2. Eine zufällige LED blinkt – das ist der erste Schritt. LED 8 - 5.
+3. Der Spieler muss den entsprechenden Taster drücken. S5 - 8.
 4. Wenn korrekt:
-   - Eine weitere LED wird zur Sequenz hinzugefügt.
-   - Das LCD zeigt das neue Level an.
+   - Eine weitere LED wird zur der Folge hinzugefügt.
+   - Das LCD zeigt das neue Level an. Level 1 - 4
 5. Wenn falsch:
    - Die RGB-LED blinkt rot.
    - Das LCD zeigt „Falsch! Versuche es erneut.“
+6. Spiel muss neu gestartet werden auf dem Dashboard.
 
 ---
 
