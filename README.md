@@ -13,7 +13,9 @@ Dieses Projekt bildet das klassische **„Simon Says“**-Spiel nach, bei dem ei
 - Visuelle folge von lichten mit LEDs
 - Benutzer-Eingabe über Taster
 - LCD zeigt Nachrichten und Level-Informationen an
-- RGB-LED für Rückmeldung (grün = korrekt, rot = falsch)
+- RGB-LED für Rückmeldung
+    - 🟩 grün -> korrekt
+    - 🟥 rot  -> falsch
 - Spiellogik wird in Node-RED umgesetzt
 - Node-RED-Dashboard zur Steuerung und Anzeige des Spielstatus
 
