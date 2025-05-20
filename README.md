@@ -4,7 +4,7 @@ Project witch Digilab
 # proto2_digilabProject
 PROTO2 -> Project with Digilab
 
-# 🎮 Simon Says - Digital Logic Puzzle Game
+# Simon Says - Digital Logic Puzzle Game
 
 A memory-based logic puzzle game built using a **Raspberry Pi**, **Node-RED** and a **Digilab** with LEDs, buttons, an LCD, and an RGB LED.
 
@@ -14,18 +14,18 @@ This project recreates the classic **Simon Says** game, where a sequence of ligh
 
 ---
 
-## 🧩 Features
+## Features
 
-- 💡 LED-based visual sequence
-- ⌨️ Button-based user input
-- 📟 LCD display for messages and level info
-- 🌈 RGB LED for feedback (green = correct, red = wrong)
-- 🧠 Game logic handled in Node-RED
-- 🖥️ Node-RED Dashboard for game control and status
+- LED-based visual sequence
+- Button-based user input
+- LCD display for messages and level info
+- RGB LED for feedback (green = correct, red = wrong)
+- Game logic handled in Node-RED
+- Node-RED Dashboard for game control and status
 
 ---
 
-## 🔧 Hardware Requirements
+## Hardware Requirements
 
 - Raspberry Pi 
 - Digilab with:
@@ -37,7 +37,7 @@ This project recreates the classic **Simon Says** game, where a sequence of ligh
 
 ---
 
-## ⚙️ Wiring Overview
+## Wiring Overview
 
 | Component | Raspberry Pi GPIO Example |
 |----------|----------------------------|
@@ -55,7 +55,7 @@ This project recreates the classic **Simon Says** game, where a sequence of ligh
 
 ---
 
-## 🧠 Game Logic
+## Game Logic
 
 1. Press "Start" on the Node-RED dashboard or a physical button.
 2. A random LED flashes – that's the first step.
