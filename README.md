@@ -1,7 +1,4 @@
-# proto2_digilabProject
-Project witch Digilab
 
-# proto2_digilabProject
 PROTO2 -> Project with Digilab
 
 # Simon Says - Digital Logic Puzzle Game
