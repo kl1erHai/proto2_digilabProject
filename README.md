@@ -10,24 +10,24 @@ Dieses Projekt bildet das klassische **„Simon Says“**-Spiel nach, bei dem ei
 
 ## 1. Funktionen
 
-- Visuelle folge von lichten mit LEDs
-- Benutzer-Eingabe über Taster
-- LCD zeigt Nachrichten und Level-Informationen an
-- RGB-LED für Rückmeldung (grün = korrekt, rot = falsch)
-- Spiellogik wird in Node-RED umgesetzt
-- Node-RED-Dashboard zur Steuerung und Anzeige des Spielstatus
+[] Visuelle folge von lichten mit LEDs
+[] Benutzer-Eingabe über Taster
+[] LCD zeigt Nachrichten und Level-Informationen an
+[] RGB-LED für Rückmeldung (grün = korrekt, rot = falsch)
+[] Spiellogik wird in Node-RED umgesetzt
+[] Node-RED-Dashboard zur Steuerung und Anzeige des Spielstatus
 
 ---
 
 ## 2. Benötigte Hardware
 
-- Raspberry Pi  
-- Digilab mit:
+[] Raspberry Pi  
+[] Digilab mit:
   - 4 Taster
   - 4 LEDs
   - 4 RGB-LED
   - LCD-Display
-- Jumperkabel
+[] Jumperkabel
 
 ---
 
@@ -51,7 +51,6 @@ Dieses Projekt bildet das klassische **„Simon Says“**-Spiel nach, bei dem ei
 
 ## 4. Spielablauf
 
-c
 1. Spielstart über einen Button im Node-RED-Dashboard oder einen physischen Taster -> Beispiel: S1.
 2. Eine zufällige LED blinkt – das ist der erste Schritt. LED 8 - 5.
 3. Der Spieler muss den entsprechenden Taster drücken. S5 - 8.
@@ -67,8 +66,8 @@ c
 
 ## 5. Node-RED Dashboard
 
-- **Spiel starten**-Button
-- Anzeige des **aktuellen Levels**
-- Statusmeldung (z. B. „Richtig!“, „Falsch!“)
-- (Optional) Punktediagramm und Highscore-Tracker
+[] **Spiel starten**-Button
+[] Anzeige des **aktuellen Levels**
+[] Statusmeldung (z. B. „Richtig!“, „Falsch!“)
+[] (Optional) Punktediagramm und Highscore-Tracker
 
