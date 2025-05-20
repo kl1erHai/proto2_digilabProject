@@ -1,74 +1,72 @@
+PROTO2 → Projekt mit Digilab
 
-PROTO2 -> Project with Digilab
+# Simon Says – Logik-Puzzle-Spiel
 
-# Simon Says - Digital Logic Puzzle Game
+Ein speicherbasiertes Logikspiel, entwickelt mit einem **Raspberry Pi**, **Node-RED** und einem **Digilab** mit LEDs, Tastern, einem LCD und einer RGB-LED.
 
-A memory-based logic puzzle game built using a **Raspberry Pi**, **Node-RED** and a **Digilab** with LEDs, buttons, an LCD, and an RGB LED.
-
-This project recreates the classic **Simon Says** game, where a sequence of lights is displayed and the player must repeat the pattern by pressing buttons in the correct order. With each success, the sequence grows harder!
-
-![Simon Says Hardware Setup](images/SimonGame.png)
+Dieses Projekt bildet das klassische **„Simon Says“**-Spiel nach, bei dem eine Lichtsequenz angezeigt wird und der Spieler diese durch das Drücken der Tasten in der richtigen Reihenfolge wiederholen muss. Mit jedem Erfolg wird die Sequenz länger und schwieriger!
 
 ---
 
-## Features
+## 1. Funktionen
 
-- LED-based visual sequence
-- Button-based user input
-- LCD display for messages and level info
-- RGB LED for feedback (green = correct, red = wrong)
-- Game logic handled in Node-RED
-- Node-RED Dashboard for game control and status
+- Visuelle folge von lichten mit LEDs
+- Benutzer-Eingabe über Taster
+- LCD zeigt Nachrichten und Level-Informationen an
+- RGB-LED für Rückmeldung (grün = korrekt, rot = falsch)
+- Spiellogik wird in Node-RED umgesetzt
+- Node-RED-Dashboard zur Steuerung und Anzeige des Spielstatus
 
 ---
 
-## Hardware Requirements
+## 2. Benötigte Hardware
 
-- Raspberry Pi 
-- Digilab with:
-  - 4 Buttons
+- Raspberry Pi  
+- Digilab mit:
+  - 4 Taster
   - 4 LEDs
-  - RGB LED
-  - LCD Display
-- Jumper wires & resistors
+  - 1 RGB-LED
+  - LCD-Display
+- Jumperkabel & Widerstände
 
 ---
 
-## Wiring Overview
+## 3. Verdrahtung
 
-| Component | Raspberry Pi GPIO Example |
-|----------|----------------------------|
-| Button 1 | GPIO 5                     |
-| Button 2 | GPIO 6                     |
-| Button 3 | GPIO 13                    |
-| Button 4 | GPIO 19                    |
-| LED 1    | GPIO 17                    |
-| LED 2    | GPIO 18                    |
-| LED 3    | GPIO 27                    |
-| LED 4    | GPIO 22                    |
-| RGB LED  | GPIO 20 (R), 21 (G), 26 (B)|
-| LCD (I²C)| SDA/SCL                    |
-| GND      | All components grounded    |
-
----
-
-## Game Logic
-
-1. Press "Start" on the Node-RED dashboard or a physical button.
-2. A random LED flashes – that's the first step.
-3. Player must press the matching button.
-4. If correct:
-   - A new LED is added to the sequence.
-   - LCD displays new level.
-5. If incorrect:
-   - RGB flashes red.
-   - LCD shows “Wrong! Try Again.”
+| Komponente | Raspberry Pi GPIO (Beispiel) |
+|------------|-------------------------------|
+| Taster 1   | GPIO 5                        |
+| Taster 2   | GPIO 6                        |
+| Taster 3   | GPIO 13                       |
+| Taster 4   | GPIO 19                       |
+| LED 1      | GPIO 17                       |
+| LED 2      | GPIO 18                       |
+| LED 3      | GPIO 27                       |
+| LED 4      | GPIO 22                       |
+| RGB-LED    | GPIO 20 (R), 21 (G), 26 (B)   |
+| LCD (I²C)  | SDA/SCL                       |
+| GND        | Gemeinsame Masse              |
 
 ---
 
-## 🖥️ Node-RED Dashboard
+## 4. Spielablauf
 
-- **Start Game** button
-- **Current Level** display
-- **Game Status** (e.g., "Correct!", "Wrong!")
-- (Optional) Score graph and high score tracker
+1. Spielstart über einen Button im Node-RED-Dashboard oder einen physischen Taster.
+2. Eine zufällige LED blinkt – das ist der erste Schritt.
+3. Der Spieler muss den entsprechenden Taster drücken.
+4. Wenn korrekt:
+   - Eine weitere LED wird zur Sequenz hinzugefügt.
+   - Das LCD zeigt das neue Level an.
+5. Wenn falsch:
+   - Die RGB-LED blinkt rot.
+   - Das LCD zeigt „Falsch! Versuche es erneut.“
+
+---
+
+## 5. Node-RED Dashboard
+
+- **Spiel starten**-Button
+- Anzeige des **aktuellen Levels**
+- Statusmeldung (z. B. „Richtig!“, „Falsch!“)
+- (Optional) Punktediagramm und Highscore-Tracker
+
