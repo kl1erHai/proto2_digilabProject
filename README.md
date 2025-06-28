@@ -64,7 +64,8 @@ Das Spiel selbst hat keine Levelstruktur. Stattdessen kann der Spieler das Spiel
 
 Die geplante Verwendung der RGB-LEDs sowie des LCD-Bildschirms konnte ich nicht realisieren. Stattdessen läuft alles über das Dashboard.
 
-<img src="dashboard.jpg" alt="Dashboard" width="400">
+<img src="dashboard1.jpg" alt="Dashboard" width="400">
+<img src="Node-Red.jpg" alt="Node-Red" width="400">
 
 ---
 
