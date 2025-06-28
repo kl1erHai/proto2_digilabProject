@@ -1,0 +1,563 @@
+[
+    {
+        "id": "c34477abebd320f6",
+        "type": "tab",
+        "label": "PROTO2 - Projekt mit dem DIGILAB",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b1e3b66f.3c0a68",
+        "type": "ui_button",
+        "z": "c34477abebd320f6",
+        "name": "Start Button",
+        "group": "f3b4c5d6e7f8g9h0",
+        "order": 4,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "START",
+        "tooltip": "Simon Spiel starten",
+        "color": "",
+        "bgcolor": "pink",
+        "className": "{ text-align: center; }",
+        "icon": "play_arrow",
+        "payload": "start",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 290,
+        "y": 360,
+        "wires": [
+            [
+                "generate_sequence"
+            ]
+        ]
+    },
+    {
+        "id": "5d6e7f8g9h0a1b2c",
+        "type": "ui_text",
+        "z": "c34477abebd320f6",
+        "group": "f3b4c5d6e7f8g9h0",
+        "order": 1,
+        "width": 13,
+        "height": 4,
+        "name": "Beschreibung",
+        "label": "",
+        "format": "<b>SIMON GAME</b><br>Beobachten Sie die Folge von LEDs. Sie sollen die Folge mit hilfe von tasten wiedergeben. <br><ul><li>LE8 → S5</li><li>LE7 → S6</li><li>LE6 → S7</li><li>LE5 → S8</li></ul>",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 180,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "random_sequence",
+        "type": "inject",
+        "z": "c34477abebd320f6",
+        "name": "Start Game",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 360,
+        "wires": [
+            [
+                "b1e3b66f.3c0a68"
+            ]
+        ]
+    },
+    {
+        "id": "generate_sequence",
+        "type": "function",
+        "z": "c34477abebd320f6",
+        "name": "Generate Sequence",
+        "func": "// Generate random LED sequence\nlet leds = [27, 18, 17, 22];\nlet sequence = [];\n\nfor (let i = 0; i < 4; i++) {\n    let index = Math.floor(Math.random() * leds.length);\n    sequence.push(leds[index]);\n}\n\nflow.set(\"sequence\", sequence);\nflow.set(\"userInput\", []);\n\nmsg.payload = sequence;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 440,
+        "wires": [
+            [
+                "blink_sequence",
+                "17626d424b2b194f",
+                "7c131638e7e43244"
+            ]
+        ]
+    },
+    {
+        "id": "blink_sequence",
+        "type": "function",
+        "z": "c34477abebd320f6",
+        "name": "Blink LEDs",
+        "func": "// Blink each LED in the sequence\nconst sequence = msg.payload;\nlet delay = 0;\n\nsequence.forEach((pin, i) => {\n    setTimeout(() => {\n        node.send({payload: 1, pin: pin});\n        setTimeout(() => {\n            node.send({payload: 0, pin: pin});\n        }, 300);\n    }, delay);\n    delay += 800;\n});\n\nreturn null;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 440,
+        "wires": [
+            [
+                "led_switch"
+            ]
+        ]
+    },
+    {
+        "id": "led_switch",
+        "type": "switch",
+        "z": "c34477abebd320f6",
+        "name": "Select LED",
+        "property": "pin",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "27",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "18",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "17",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "22",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 710,
+        "y": 440,
+        "wires": [
+            [
+                "led_27"
+            ],
+            [
+                "led_18"
+            ],
+            [
+                "c70f92618a116190"
+            ],
+            [
+                "563a2811a8c7ac52"
+            ]
+        ]
+    },
+    {
+        "id": "led_27",
+        "type": "rpi-gpio out",
+        "z": "c34477abebd320f6",
+        "name": "LD8 (GPIO27)",
+        "pin": "27",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 960,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "led_18",
+        "type": "rpi-gpio out",
+        "z": "c34477abebd320f6",
+        "name": "LD7 (GPIO18)",
+        "pin": "18",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 960,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "button_23",
+        "type": "rpi-gpio in",
+        "z": "c34477abebd320f6",
+        "name": "S5 (GPIO23)",
+        "pin": "23",
+        "intype": "down",
+        "debounce": "25",
+        "read": false,
+        "bcm": true,
+        "x": 90,
+        "y": 580,
+        "wires": [
+            [
+                "add_input_23"
+            ]
+        ]
+    },
+    {
+        "id": "button_24",
+        "type": "rpi-gpio in",
+        "z": "c34477abebd320f6",
+        "name": "S6 (GPIO24)",
+        "pin": "24",
+        "intype": "down",
+        "debounce": "25",
+        "read": false,
+        "bcm": true,
+        "x": 90,
+        "y": 640,
+        "wires": [
+            [
+                "add_input_24"
+            ]
+        ]
+    },
+    {
+        "id": "add_input_23",
+        "type": "change",
+        "z": "c34477abebd320f6",
+        "name": "Button → 27",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pin",
+                "pt": "msg",
+                "to": "27",
+                "tot": "num"
+            }
+        ],
+        "x": 290,
+        "y": 580,
+        "wires": [
+            [
+                "check_input"
+            ]
+        ]
+    },
+    {
+        "id": "add_input_24",
+        "type": "change",
+        "z": "c34477abebd320f6",
+        "name": "Button → 18",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pin",
+                "pt": "msg",
+                "to": "18",
+                "tot": "num"
+            }
+        ],
+        "x": 290,
+        "y": 640,
+        "wires": [
+            [
+                "check_input"
+            ]
+        ]
+    },
+    {
+        "id": "check_input",
+        "type": "function",
+        "z": "c34477abebd320f6",
+        "name": "Check Input",
+        "func": "if (msg.payload !== 1) {\n    // Ignoriere Loslassen (0)\n    return null;\n}\n\nlet userInput = flow.get(\"userInput\") || [];\n\nif (userInput.length < 4) {\n    userInput.push(msg.pin);\n    flow.set(\"userInput\", userInput);\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 660,
+        "wires": [
+            [
+                "7c131638e7e43244",
+                "0515eeb56ec13f25"
+            ]
+        ]
+    },
+    {
+        "id": "c70f92618a116190",
+        "type": "rpi-gpio out",
+        "z": "c34477abebd320f6",
+        "name": "LD6 (GPIO17)",
+        "pin": "17",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 960,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "563a2811a8c7ac52",
+        "type": "rpi-gpio out",
+        "z": "c34477abebd320f6",
+        "name": "LD5 (GPIO22)",
+        "pin": "22",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 960,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "dffba5cf4e349395",
+        "type": "rpi-gpio in",
+        "z": "c34477abebd320f6",
+        "name": "S7 (GPIO06)",
+        "pin": "6",
+        "intype": "down",
+        "debounce": "25",
+        "read": false,
+        "bcm": true,
+        "x": 90,
+        "y": 700,
+        "wires": [
+            [
+                "d3899692fe2d2e94"
+            ]
+        ]
+    },
+    {
+        "id": "27b47f1d95f49902",
+        "type": "rpi-gpio in",
+        "z": "c34477abebd320f6",
+        "name": "S8 (GPIO26)",
+        "pin": "26",
+        "intype": "down",
+        "debounce": "25",
+        "read": false,
+        "bcm": true,
+        "x": 90,
+        "y": 760,
+        "wires": [
+            [
+                "c25c934fac8a10bf"
+            ]
+        ]
+    },
+    {
+        "id": "d3899692fe2d2e94",
+        "type": "change",
+        "z": "c34477abebd320f6",
+        "name": "Button → 17",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pin",
+                "pt": "msg",
+                "to": "17",
+                "tot": "num"
+            }
+        ],
+        "x": 290,
+        "y": 700,
+        "wires": [
+            [
+                "check_input"
+            ]
+        ]
+    },
+    {
+        "id": "c25c934fac8a10bf",
+        "type": "change",
+        "z": "c34477abebd320f6",
+        "name": "Button → 22",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pin",
+                "pt": "msg",
+                "to": "22",
+                "tot": "num"
+            }
+        ],
+        "x": 290,
+        "y": 760,
+        "wires": [
+            [
+                "check_input"
+            ]
+        ]
+    },
+    {
+        "id": "17626d424b2b194f",
+        "type": "debug",
+        "z": "c34477abebd320f6",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "7c131638e7e43244",
+        "type": "function",
+        "z": "c34477abebd320f6",
+        "name": "function 1",
+        "func": "let sequence = flow.get(\"sequence\") || [];\nlet userInput = flow.get(\"userInput\") || [];\n\nif (userInput.length === 4) {\n    let correct = sequence.every((val, index) => val === userInput[index]);\n\n    flow.set(\"userInput\", []);\n\n    msg.payload = correct ? \"✅ Richtig!\" : \"❌ Falsch!\";\n    return msg;\n} else {\n   msg.payload = \"Gebe die Lichtfolge wieder!\";\n    return msg;\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 540,
+        "wires": [
+            [
+                "55c89c64f36fbcb0",
+                "11ca3f8aeed751f1"
+            ]
+        ]
+    },
+    {
+        "id": "55c89c64f36fbcb0",
+        "type": "debug",
+        "z": "c34477abebd320f6",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "0515eeb56ec13f25",
+        "type": "debug",
+        "z": "c34477abebd320f6",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "pin",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "11ca3f8aeed751f1",
+        "type": "ui_text",
+        "z": "c34477abebd320f6",
+        "group": "f3b4c5d6e7f8g9h0",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 710,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "2f9d867e4747d370",
+        "type": "ui_text",
+        "z": "c34477abebd320f6",
+        "group": "f3b4c5d6e7f8g9h0",
+        "order": 2,
+        "width": 13,
+        "height": 1,
+        "name": "start",
+        "label": "",
+        "format": "Klicken Sie auf <b>START</b>, um zu beginnen. Viel Erfolg!",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 150,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "953dd83a46c4a25a",
+        "type": "ui_spacer",
+        "z": "c34477abebd320f6",
+        "name": "spacer",
+        "group": "f3b4c5d6e7f8g9h0",
+        "order": 3,
+        "width": 5,
+        "height": 1
+    },
+    {
+        "id": "fd08578f8eacd357",
+        "type": "ui_spacer",
+        "z": "c34477abebd320f6",
+        "name": "spacer",
+        "group": "f3b4c5d6e7f8g9h0",
+        "order": 5,
+        "width": 5,
+        "height": 1
+    },
+    {
+        "id": "f3b4c5d6e7f8g9h0",
+        "type": "ui_group",
+        "name": "Simon Game",
+        "tab": "abcd1234efgh5678",
+        "order": 1,
+        "disp": true,
+        "width": 13,
+        "collapse": false
+    },
+    {
+        "id": "abcd1234efgh5678",
+        "type": "ui_tab",
+        "name": "SIMON",
+        "icon": "games",
+        "order": 1
+    }
+]
