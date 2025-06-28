@@ -14,3 +14,10 @@ Ich habe den Digilab in meinem Projekt benutzt.
 Ich habe vier Schalter und vier LEDs für mein Spiel verwendet.
 
 <img src="digilab.jpg" alt="Digilab" width="400">
+
+# Verantwortung
+
+Ich arbeite meist selbstständig und versuche, Probleme zuerst alleine zu lösen. Im Projekt habe ich zum Beispiel das Problem mit dem Raspberry Pi selbst bearbeitet.
+In der Klasse bin ich hilfsbereit und unterstütze Mitschüler, wenn sie Hilfe brauchen.
+Ich arbeite zielstrebig an meinen Aufgaben, auch wenn ich manchmal mehr Zeit brauche.
+
