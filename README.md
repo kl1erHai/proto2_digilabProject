@@ -52,7 +52,7 @@ Dieses Projekt bildet das klassische **„Simon Says“**-Spiel nach, bei dem ei
    - Der Spieler kann das Spiel neustarten.
 6. Wenn die Knopf-Folge falsch ist:
    - Wird im Dashboard **Falsch** angezeigt.
-7. Man hat keine Lavel in dem Spiel 
+7. Man hat keine Level in dem Spiel 
 
 ---
 
