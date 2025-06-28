@@ -82,7 +82,7 @@ Ich habe vier Schalter und vier LEDs für mein Spiel verwendet.
 
 ## Kapitel 4: Verantwortung
 
-Ich arbeite meist selbstständig und versuche, Probleme zuerst alleine zu lösen. Im Projekt habe ich zum Beispiel das Problem mit dem Raspberry Pi zuerst selbst bearbeitet. Wenn ich jedoch nicht weiterkomme, frage ich gezielt nach Hilfe.
+Ich arbeite meist selbstständig und versuche, Probleme zuerst alleine zu lösen. Im Projekt habe ich zum Beispiel das Problem mit dem Raspberry Pi zuerst selbst bearbeitet. Wenn ich jedoch nicht weiterkomme, frage ich nach Hilfe.
 
 In der Klasse bin ich hilfsbereit und unterstütze Mitschüler, wenn sie Hilfe brauchen.  
 Ich arbeite zielstrebig an meinen Aufgaben, auch wenn ich manchmal mehr Zeit dafür benötige.
