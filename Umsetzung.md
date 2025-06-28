@@ -13,4 +13,4 @@ Die geplante Verwendung der RGB-LEDs sowie des LCD-Bildschirms konnte ich nicht 
 Ich habe den Digilab in meinem Projekt benutzt.  
 Ich habe vier Schalter und vier LEDs für mein Spiel verwendet.
 
-<img src="digilab.jpg" alt="Digilab" width="300">
+<img src="digilab.jpg" alt="Digilab" width="400">
